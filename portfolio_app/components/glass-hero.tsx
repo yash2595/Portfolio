@@ -9,7 +9,7 @@ import { ProjectStack, Journey } from "@/components/work";
 import { TechStack } from "@/components/stack";
 import { Contact } from "@/components/contact";
 import { Beyond, ProcessTrack, Faq } from "@/components/more";
-import { Loader, Progress, Cursor, Magnetic, Scramble, CountUp, Marquee, Words, Particles } from "@/components/fx";
+import { Progress, Cursor, Magnetic, Scramble, CountUp, Marquee, Words, Particles } from "@/components/fx";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -64,7 +64,7 @@ export default function GlassHero() {
     el.addEventListener("pointerleave", off);
     el.addEventListener("touchend", off);
     gsap.ticker.add(tick);
-    const pulse = gsap.delayedCall(3.2, off);
+    const pulse = gsap.delayedCall(1.2, off);
     return () => {
       pulse.kill(); gsap.ticker.remove(tick);
       el.removeEventListener("pointermove", pm); el.removeEventListener("touchmove", tm);
@@ -73,8 +73,8 @@ export default function GlassHero() {
   }, []);
 
   useGSAP(() => {
-    gsap.from(".hl", { yPercent: 110, duration: 1.1, ease: "power4.out", stagger: 0.12, delay: 1.9 });
-    gsap.from(".hero-fade", { y: 24, opacity: 0, duration: 0.9, ease: "power3.out", stagger: 0.1, delay: 2.3 });
+    gsap.from(".hl", { yPercent: 110, duration: 0.9, ease: "power4.out", stagger: 0.08, delay: 0.1 });
+    gsap.from(".hero-fade", { y: 24, opacity: 0, duration: 0.7, ease: "power3.out", stagger: 0.06, delay: 0.25 });
     gsap.utils.toArray<HTMLElement>(".rv").forEach((el) =>
       gsap.from(el, { y: 60, opacity: 0, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 85%", once: true } })
     );
@@ -104,7 +104,7 @@ export default function GlassHero() {
 
   return (
     <>
-      <Loader /><Progress /><Cursor />
+      <Progress /><Cursor />
       <main ref={root}>
         <header className="fixed left-1/2 top-4 z-50 hidden -translate-x-1/2 items-center gap-1 rounded-full border border-white/60 bg-white/60 p-2 shadow-[0_8px_30px_rgba(12,17,29,.08)] backdrop-blur-xl md:flex">
           <a href="#sec-hero" className="px-4 text-sm font-extrabold">YM</a>

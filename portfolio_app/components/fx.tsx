@@ -4,29 +4,9 @@ import gsap from "gsap";
 
 const reduced = () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/** Intro curtain with counter. Removes itself when finished. */
+/** Intro curtain with counter (disabled - page opens directly). */
 export function Loader() {
-  const [done, setDone] = useState(false);
-  const num = useRef<HTMLSpanElement>(null);
-  const wrap = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (reduced()) { setDone(true); return; }
-    const c = { v: 0 };
-    const tl = gsap.timeline({ onComplete: () => setDone(true) });
-    tl.to(c, { v: 100, duration: 1.1, ease: "power2.inOut", onUpdate: () => { if (num.current) num.current.textContent = String(Math.round(c.v)).padStart(2, "0"); } })
-      .to(".ld-in", { yPercent: -120, opacity: 0, duration: 0.5, ease: "power3.in" })
-      .to(wrap.current, { yPercent: -100, duration: 0.8, ease: "power4.inOut" }, "-=0.1");
-    return () => { tl.kill(); };
-  }, []);
-  if (done) return null;
-  return (
-    <div ref={wrap} className="fixed inset-0 z-[100] flex items-center justify-center bg-deep text-white">
-      <div className="ld-in text-center">
-        <div className="font-mono text-xs uppercase tracking-[0.4em] text-white/50">Yash Mishra</div>
-        <div className="mt-3 text-7xl font-extrabold tabular-nums md:text-8xl"><span ref={num}>00</span><span className="text-brand">%</span></div>
-      </div>
-    </div>
-  );
+  return null;
 }
 
 /** Thin gradient progress bar tied to page scroll. */
