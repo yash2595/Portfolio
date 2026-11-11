@@ -29,19 +29,19 @@ export type Project = { title: string; tag: string; kind: "exam" | "chat" | "cha
 // Set `live` on DAM AI Guardian and Raah Setu once you have their deployed URLs; buttons appear automatically.
 export const PROJECTS: Project[] = [
   {
-    title: "MyLAT", tag: "Launched product · Ed-tech", kind: "exam", hue: 222, live: "https://mylatindia.com/",
+    title: "MyLAT", tag: "Launched product · Ed-tech", kind: "exam", hue: 222, live: "https://mylatindia.com/", shot: "/images/projects/mylat.webp",
     what: "Level Assessment Test platform. A student takes one 60-minute test, gets a verified Level 1–5 and a QR-verifiable certificate, then is matched to placement opportunities.",
     points: ["100-question timed exam with server-side timer and autosave", "Registration, payment and weekend slot booking", "QR-verifiable certificates and candidate dashboard"],
     stack: ["Full Stack", "Auth", "Payments", "QR Certificates"],
   },
   {
-    title: "MantraSetu · Saarthi AI", tag: "Live product · AI", kind: "chat", hue: 24, live: "https://saarthi-mantrasetu.vercel.app/",
+    title: "MantraSetu · Saarthi AI", tag: "Live product · AI", kind: "chat", hue: 24, live: "https://saarthi-mantrasetu.vercel.app/", shot: "/images/projects/mantrasetu.webp",
     what: "Spiritual AI platform to discover pujas and connect with pandits. Saarthi, the conversational assistant, understands what the user needs and guides them.",
     points: ["Intent-aware chat assistant (LLMs + NLP)", "Browse pujas and connect with pandits", "Tested end to end with Playwright, deployed on Vercel"],
     stack: ["Python", "LLMs", "NLP", "Node.js"],
   },
   {
-    title: "DAM AI Guardian", tag: "Live project · Monitoring", kind: "chart", hue: 188, live: "https://dam-ai-guardian-sx3t.vercel.app/login", code: P.github,
+    title: "DAM AI Guardian", tag: "Live project · Monitoring", kind: "chart", hue: 188, live: "https://dam-ai-guardian-sx3t.vercel.app/login", code: P.github, shot: "/images/projects/dam.webp",
     what: "Full-stack dam safety monitoring app. A real-time dashboard tracks incoming data continuously and raises alerts. Deployed on Vercel with a login-protected dashboard.",
     points: ["Real-time dashboard and alerting", "REST API with MongoDB storage"],
     stack: ["React", "Node.js", "Express", "MongoDB"],

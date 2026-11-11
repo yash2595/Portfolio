@@ -104,7 +104,8 @@ function Shot({ src, url, alt, onFail }: { src: string; url: string; alt: string
     const el = img.current;
     if (el && el.complete && el.naturalWidth === 0) { onFail(); return; }
     const t = setTimeout(() => { if (bad(img.current)) onFail(); }, 8000);
-    return () => clearTimeout(t);
+    window.addEventListener("resize", measure);
+    return () => { clearTimeout(t); window.removeEventListener("resize", measure); };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [src]);
   return (
@@ -114,8 +115,8 @@ function Shot({ src, url, alt, onFail }: { src: string; url: string; alt: string
           <i className="h-2.5 w-2.5 rounded-full bg-red-400" /><i className="h-2.5 w-2.5 rounded-full bg-yellow-400" /><i className="h-2.5 w-2.5 rounded-full bg-green-400" />
           <span className="ml-3 flex-1 truncate rounded-md bg-black/30 px-3 py-1 font-mono text-[11px] text-white/50">{url}</span>
         </div>
-        <div className="relative h-[290px] overflow-hidden bg-white">
-          <img ref={img} src={src} alt={alt} loading="lazy" onLoad={measure} onError={onFail} className="block w-full transition-transform duration-[3500ms] ease-in-out group-hover:[transform:translateY(calc(var(--off)*-1px))]" style={{ "--off": off } as React.CSSProperties} />
+        <div className="relative h-[290px] overflow-hidden bg-[#0a0f1d]">
+          <img ref={img} src={src} alt={alt} loading="lazy" onLoad={measure} onError={onFail} className="block w-full min-h-[290px] object-cover object-top transition-transform duration-[3500ms] ease-in-out group-hover:[transform:translateY(calc(var(--off)*-1px))]" style={{ "--off": off } as React.CSSProperties} />
         </div>
       </div>
     </div>
